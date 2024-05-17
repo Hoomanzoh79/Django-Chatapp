@@ -135,3 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CUSTOM USER
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+# ASGI
+ASGI_APPLICATION = "core.asgi.application"
