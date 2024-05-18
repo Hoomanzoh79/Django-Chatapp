@@ -75,7 +75,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -138,3 +137,5 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 # ASGI
 ASGI_APPLICATION = "core.asgi.application"
+
+WSGI_APPLICATION = 'core.wsgi.application'
