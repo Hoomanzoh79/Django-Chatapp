@@ -137,5 +137,13 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 # ASGI
 ASGI_APPLICATION = "core.asgi.application"
-
 WSGI_APPLICATION = 'core.wsgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],
+        },
+    },
+}
