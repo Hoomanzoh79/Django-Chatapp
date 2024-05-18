@@ -1,6 +1,14 @@
 version: '3.9'
 
 services:
+  redis:
+    container_name: redis
+    image: redis
+    restart : always
+    ports:
+    -  "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+
   chatapp:
     build: .
     container_name: chatapp
@@ -12,3 +20,7 @@ services:
     environment:
        - DJANGO_SECRET_KEY=test
        - DJANGO_DEBUG=True
+    depends_on:
+      - redis
+    links:
+      - redis
