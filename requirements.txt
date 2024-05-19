@@ -1,7 +1,6 @@
 # general modules
 django
-channels
-daphne
+channels[daphne]
 
 # channel
 redis
