@@ -137,7 +137,7 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 # ASGI
 ASGI_APPLICATION = "core.asgi.application"
-WSGI_APPLICATION = 'core.wsgi.application'
+# WSGI_APPLICATION = 'core.wsgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
