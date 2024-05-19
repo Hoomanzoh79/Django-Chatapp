@@ -5,3 +5,6 @@ channels[daphne]
 # channel layers
 redis
 channels-redis
+
+# end-to-end tests
+selenium
