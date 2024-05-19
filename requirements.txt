@@ -2,6 +2,6 @@
 django
 channels[daphne]
 
-# channel
+# channel layers
 redis
 channels-redis
