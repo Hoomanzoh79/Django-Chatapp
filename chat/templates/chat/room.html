@@ -1,14 +1,22 @@
 <!-- chat/templates/chat/room.html -->
 <!DOCTYPE html>
+{% extends '_base.html' %}
 <html>
-<head>
-    <meta charset="utf-8"/>
-    <title>Chat Room</title>
-</head>
+    {% block page_title %}Chat room{% endblock %}
+
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+{% block content %}
+<section>
+<div class="container">
+    <div class="row flex-row-reverse">
+    <h1>Chat room</h1>
+    <div data-mdb-input-init class="form-outline">
+        <textarea class="form-control" id="chat-log" rows="20"></textarea>
+    </div>
+    <div class="form-outline mt-4" data-mdb-input-init>
+        <input class="form-control" id="chat-message-input" type="text">
+        <input class="btn btn-success mt-3" id="chat-message-submit" type="button" value="Send">
+      </div>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
@@ -46,5 +54,10 @@
             messageInputDom.value = '';
         };
     </script>
+</div>
+</div>
+</section>
+{% endblock %}
 </body>
+
 </html>
