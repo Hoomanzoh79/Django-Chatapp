@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block page_title %} Sign Up {% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5" dir="ltr">
+        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">
+            <h1 class="text-center">Signup</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="btn btn-success mt-3 w-100">Signup</button>
+            </form>
+        </div>
+
+    </div>
+
+    </form>
+
+
+{% endblock content %}
