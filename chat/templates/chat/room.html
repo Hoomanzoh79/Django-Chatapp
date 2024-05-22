@@ -22,7 +22,14 @@
         <input class="btn btn-success mt-3" id="chat-message-submit" type="button" value="Send">
       </div>
     {% else %}
-    <p>you have to login or signup to start using this chatapp</p>
+    <h4>you have to be logged in,if you want to use this chatapp!</h4>
+    <div>
+    <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+    </div>
+    <div>
+        <h5>have not registered yet?</h5>
+        <a href="{% url 'accounts:signup' %}" class="btn btn-primary">Signup</a>
+    </div>
     {% endif %}
     {{ room_name|json_script:"room-name" }}
     <script>
