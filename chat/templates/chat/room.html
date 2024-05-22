@@ -9,9 +9,11 @@
 <section>
 <div class="container">
     <div class="row flex-row-reverse">
-    <h1>Chat room</h1>
+    <div class="mt-3">
+    <h1>Chat room : {{ room_name }}</h1>
+    </div>
     <div data-mdb-input-init class="form-outline">
-        <textarea class="form-control" id="chat-log" rows="20"></textarea>
+        <textarea class="form-control" id="chat-log" rows="5"></textarea>
     </div>
     <div class="form-outline mt-4" data-mdb-input-init>
         <input class="form-control" id="chat-message-input" type="text">
