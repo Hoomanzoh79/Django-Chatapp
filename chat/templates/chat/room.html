@@ -12,15 +12,19 @@
     <div class="mt-3">
     <h1>Chat room : {{ room_name }}</h1>
     </div>
+    {% if user.is_authenticated %}
+    {{user.username|json_script:"username"}}
     <div data-mdb-input-init class="form-outline">
-        <textarea class="form-control" id="chat-log" rows="5"></textarea>
+        <textarea class="form-control" id="chat-log" rows="5" readonly></textarea>
     </div>
     <div class="form-outline mt-4" data-mdb-input-init>
         <input class="form-control" id="chat-message-input" type="text">
         <input class="btn btn-success mt-3" id="chat-message-submit" type="button" value="Send">
       </div>
+    {% else %}
+    <p>you have to login or signup to start using this chatapp</p>
+    {% endif %}
     {{ room_name|json_script:"room-name" }}
-    {{user.username|json_script:"username"}}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
         const username = JSON.parse(document.getElementById('username').textContent);
