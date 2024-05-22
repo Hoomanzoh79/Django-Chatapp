@@ -20,8 +20,10 @@
         <input class="btn btn-success mt-3" id="chat-message-submit" type="button" value="Send">
       </div>
     {{ room_name|json_script:"room-name" }}
+    {{user.username|json_script:"username"}}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
+        const username = JSON.parse(document.getElementById('username').textContent);
 
         const chatSocket = new WebSocket(
             'ws://'
@@ -33,7 +35,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            document.querySelector('#chat-log').value += (data.message +'\n'+'sent by : '+username+'\n');
         };
 
         chatSocket.onclose = function(e) {
@@ -51,7 +53,7 @@
             const messageInputDom = document.querySelector('#chat-message-input');
             const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
-                'message': message
+                'message': message,
             }));
             messageInputDom.value = '';
         };
