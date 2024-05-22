@@ -150,3 +150,7 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+
+LOGIN_REDIRECT_URL = 'chat:index'
+LOGOUT_REDIRECT_URL = 'chat:index'
