@@ -14,6 +14,9 @@
     </div>
     {% if user.is_authenticated %}
     {{user.username|json_script:"username"}}
+    <div class="form-outline mt-4" data-mdb-input-init>
+        <textarea class="form-control-sm" id="sender-log" cols="30" rows="1" readonly>sender: {{user.username}}</textarea>
+      </div>
     <div data-mdb-input-init class="form-outline">
         <textarea class="form-control" id="chat-log" rows="5" readonly></textarea>
     </div>
