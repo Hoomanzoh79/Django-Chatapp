@@ -14,10 +14,12 @@
     </div>
     {% if user.is_authenticated %}
     {{user.username|json_script:"username"}}
-    <div class="form-outline mt-4" data-mdb-input-init>
-        <textarea class="form-control-sm" id="sender-log" cols="30" rows="1" readonly>sender: {{user.username}}</textarea>
-      </div>
-    <div data-mdb-input-init class="form-outline">
+    <div class="flex mt-3">
+        <input type="text" id="sender-log" name="sender-input" class="slight-left" placeholder="sender: @{{user.username}}" readonly>
+        <input type="text" id="reciever-log" name="reciever-input" class="slight-left" placeholder="reciever">
+        <input class="btn btn-success" id="chat-reciever-submit" type="button" value="submit reciever">
+    </div>
+    <div data-mdb-input-init class="form-outline mt-3">
         <textarea class="form-control" id="chat-log" rows="5" readonly></textarea>
     </div>
     <div class="form-outline mt-4" data-mdb-input-init>
