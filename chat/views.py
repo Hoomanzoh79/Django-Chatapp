@@ -12,7 +12,5 @@ class IndexView(TemplateView):
         return context
 
 
-def room_view(request, room_name):
-    chat_room, created = Room.objects.get_or_create(name=room_name)
-
-    return render(request, "chat/room.html", {"room": chat_room})
+def room_view(request,room_name):
+    return render(request, "chat/room.html",{"room_name": room_name})
