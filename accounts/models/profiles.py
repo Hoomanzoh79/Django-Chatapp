@@ -6,7 +6,7 @@ from .users import CustomUser
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name="profile")
+    username = models.ForeignKey(CustomUser,on_delete=models.CASCADE,related_name="profile")
     # image = models.ImageField()
     first_name = models.CharField(max_length=50,blank=True)
     last_name = models.CharField(max_length=50,blank=True)
@@ -22,5 +22,5 @@ class Profile(models.Model):
     datetime_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'profile : {self.user.username}'
+        return f'profile : {self.username}'
     
