@@ -8,3 +8,6 @@ channels-redis
 
 # end-to-end tests
 selenium
+
+# 3rd party
+python-decouple
