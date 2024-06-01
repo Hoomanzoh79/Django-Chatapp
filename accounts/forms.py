@@ -19,3 +19,9 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ("username","email","first_name","last_name","bio","phone_number",)
+    
+    def __init__(self, *args, **kwargs):
+       super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+       del self.fields['password']
+       for fieldname in ['username']:
+           self.fields[fieldname].help_text = None
