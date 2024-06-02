@@ -10,7 +10,6 @@ class CustomUserAdmin(UserAdmin):
     list_display = ['email', 'username','first_name','last_name','phone_number','is_superuser','is_verified',]
     list_editable = ['is_verified']
     add_form = CustomUserCreationForm
-    form = CustomUserChangeForm
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('phone_number',)}),
     )
