@@ -39,10 +39,12 @@
                                         <div class="d-flex flex-column justify-content-between h-100">
                                             <div class="card-body">
                                                 <a class="text-decoration-none" href=""><h3
-                                                        class="card-title"><strong>{{ user.username }}</strong></h3>
+                                                        class="card-title"><strong>@{{ user.username }}</strong></h3>
                                                 </a>
+                                                <p>{{user.first_name}} {{user.last_name}}</p>
+                                                <p>bio : {{user.bio}}</p>
                                                 <a href="">
-                                                    <button type="submit" class="btn btn-secondary mt-3"> see details </button>
+                                                    <button type="submit" class="btn btn-secondary mt-3"> Follow </button>
                                                 </a>
                                             </div>
                                         </div>
