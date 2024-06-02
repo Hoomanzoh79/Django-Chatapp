@@ -5,7 +5,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4">
-                <a class="navbar-brand" href="{% url 'chat:index' %}">Index</a>
+                <a class="navbar-brand" href="{% url 'pages:home' %}">Index</a>
                 {% if user.is_authenticated %}
                 <a class="navbar-brand" href="{% url 'accounts:edit-account' %}">Edit Account</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
