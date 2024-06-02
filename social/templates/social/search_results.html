@@ -21,7 +21,22 @@
                     <div class="row gx-4 justify-content-center">
                         <div class="col-lg-8">
                             {% for user in users %}
-                                {{user.username}}
+                            <div class="card m-2 border-primary mb-3" style="max-width: 45%">
+                                <div class="row g-0 h-100" dir="ltr">
+                                    <div class="col-md-8 h-100">
+                                        <div class="d-flex flex-column justify-content-between h-100">
+                                            <div class="card-body">
+                                                <a class="text-decoration-none" href=""><h3
+                                                        class="card-title"><strong>{{ user.username }}</strong></h3>
+                                                </a>
+                                                <a href="">
+                                                    <button type="submit" class="btn btn-secondary mt-3"> see details </button>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         </div>
                     </div>
