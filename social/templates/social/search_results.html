@@ -20,13 +20,9 @@
                 <div class="container px-4">
                     <div class="row gx-4 justify-content-center">
                         <div class="col-lg-8">
-                            <center>
-                            <h2>Search the username that you want to follow</h2>
-                            <form action="{% url 'social:search' %}" method="get">
-                                <input type="search" id="user-search" name="q" placeholder="@username" class="form-control"/>
-                                <button type="submit" class="btn btn-success mt-3">Search</button>
-                              </form>
-                            </center>
+                            {% for user in users %}
+                                {{user.username}}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

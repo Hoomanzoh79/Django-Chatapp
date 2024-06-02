@@ -1,9 +1,11 @@
 from django.views.generic import ListView
 from django.contrib.auth import get_user_model
 
+from accounts.models import CustomUser
+
 
 class SearchResultsView(ListView):
-    model = get_user_model()
+    model = CustomUser
     template_name = "social/search_results.html"
     context_object_name = 'users'
 
