@@ -4,4 +4,4 @@ from .models import Follow
 @admin.register(Follow)
 class FollowAdmin(admin.ModelAdmin):
     model = Follow
-    list_display = ["follower","followed","follow_data"]
+    list_display = ["follower","followed","follow_date"]
