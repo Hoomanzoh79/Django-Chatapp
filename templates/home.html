@@ -1,1 +1,35 @@
-home
+<!DOCTYPE html>
+{% extends '_base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block page_title %} Home {% endblock %}
+</head>
+<body>
+    {% block content %}
+            <!-- Header-->
+            <header class="bg-primary bg-gradient text-white">
+                <div class="container px-4 text-center">
+                    <h1 class="fw-bolder">Welcome to Django Chatapp!</h1>
+                    <p class="lead">A Simple chatapp using django channels and websockets</p>
+                </div>
+            </header>
+            <!-- About section-->
+            <section id="about">
+                <div class="container px-4">
+                    <div class="row gx-4 justify-content-center">
+                        <div class="col-lg-8">
+                            <h2>Search which user you want to follow</h2>
+                            <ul>
+                                {% for room in rooms %}
+                                <li>{{room.name}}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    {% endblock %}
+</body>
+</html>
