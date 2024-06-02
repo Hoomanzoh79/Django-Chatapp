@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'chat',
     'accounts',
     'social',
+    'pages',
 
 ]
 
