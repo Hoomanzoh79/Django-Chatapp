@@ -3,8 +3,8 @@ from django.views.generic import TemplateView
 
 from .models import Room
 
-class IndexView(TemplateView):
-    template_name = "chat/index.html"
+class ChatIndexView(TemplateView):
+    template_name = "chat/chat_index.html"
 
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
