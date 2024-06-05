@@ -33,23 +33,20 @@
                     </div>
                 {% endif %}
                             {% for user in users %}
-                            <div class="card m-2 border-primary mb-3" style="max-width: 45%">
-                                <div class="row g-0 h-100" dir="ltr">
-                                    <div class="col-md-8 h-100">
-                                        <div class="d-flex flex-column justify-content-between h-100">
-                                            <div class="card-body">
-                                                <a class="text-decoration-none" href=""><h3
-                                                        class="card-title"><strong>@{{ user.username }}</strong></h3>
-                                                </a>
-                                                <p>{{user.first_name}} {{user.last_name}}</p>
-                                                <a href="{% url 'social:follow' user.username %}">
-                                                    <button type="submit" class="btn btn-secondary mt-3"> Follow </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card-body">
+                                  <h5 class="card-title">@{{user.username}}</h5>
+                                  <p class="card-text">bio: {{user.bio}}</p>
                                 </div>
-                            </div>
+                                <ul class="list-group list-group-flush">
+                                  <li class="list-group-item">{{user.first_name}} {{user.last_name}}</li>
+                                </ul>
+                                <div class="card-body">
+                                  <a href="{% url 'social:follow' user.username %}" class="btn btn-primary">Follow</a>
+                                  <a href="{% url 'accounts:account-detail' user.id %}" class="btn btn-secondary">View Profile</a>
+                                </div>
+                              </div>
                             {% endfor %}
                         </div>
                     </div>
