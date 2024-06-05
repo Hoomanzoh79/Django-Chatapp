@@ -23,12 +23,12 @@
                             <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><span
                                     class="fw-bold">search : {{ search_query }}</span><span>|</span>
                                 <span
-                                        class="fw-bold">results : {{ users|length }} </span>
+                                        class="fw-bold">users : {{ users|length }} </span>
                             </div></div>
                 {% if users|length == 0 %}
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
-                            <h2 class="mt-4"><strong>Sorry ! no results found for your search!</strong></h2>
+                            <h2 class="mt-4"><strong>Sorry ! no users were found for your search!</strong></h2>
                         </div>
                     </div>
                 {% endif %}
@@ -43,7 +43,7 @@
                                                 </a>
                                                 <p>{{user.first_name}} {{user.last_name}}</p>
                                                 <p>bio : {{user.bio}}</p>
-                                                <a href="">
+                                                <a href="{% url 'social:follow' user.username %}">
                                                     <button type="submit" class="btn btn-secondary mt-3"> Follow </button>
                                                 </a>
                                             </div>
