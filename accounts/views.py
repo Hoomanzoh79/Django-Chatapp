@@ -30,3 +30,4 @@ class AccountDetailView(generic.DetailView):
     model = CustomUser
     template_name = "accounts/account_detail.html"
     context_object_name = "account"
+    slug_field = "username"
