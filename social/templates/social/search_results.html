@@ -42,7 +42,6 @@
                                                         class="card-title"><strong>@{{ user.username }}</strong></h3>
                                                 </a>
                                                 <p>{{user.first_name}} {{user.last_name}}</p>
-                                                <p>bio : {{user.bio}}</p>
                                                 <a href="{% url 'social:follow' user.username %}">
                                                     <button type="submit" class="btn btn-secondary mt-3"> Follow </button>
                                                 </a>
