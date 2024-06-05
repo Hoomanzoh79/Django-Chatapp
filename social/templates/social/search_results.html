@@ -44,7 +44,7 @@
                                 </ul>
                                 <div class="card-body">
                                   <a href="{% url 'social:follow' user.username %}" class="btn btn-primary">Follow</a>
-                                  <a href="{% url 'accounts:account-detail' user.id %}" class="btn btn-secondary">View Profile</a>
+                                  <a href="{{ user.get_absolute_url }}" class="btn btn-secondary">View Profile</a>
                                 </div>
                               </div>
                             {% endfor %}
