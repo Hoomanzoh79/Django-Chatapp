@@ -16,7 +16,7 @@ class SignUpView(generic.CreateView):
 class EditAccountView(LoginRequiredMixin,generic.UpdateView):
     form_class = CustomUserChangeForm
     template_name = "accounts/edit_account.html"
-    success_url = reverse_lazy("chat:index")
+    success_url = reverse_lazy("pages:home")
 
 
     def get_object(self):
