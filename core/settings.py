@@ -156,5 +156,5 @@ CHANNEL_LAYERS = {
 }
 
 
-LOGIN_REDIRECT_URL = 'chat:index'
-LOGOUT_REDIRECT_URL = 'chat:index'
+LOGIN_REDIRECT_URL = 'pages:home'
+LOGOUT_REDIRECT_URL = 'pages:home'
