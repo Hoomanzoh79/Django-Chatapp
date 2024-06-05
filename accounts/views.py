@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -23,3 +24,9 @@ class EditAccountView(LoginRequiredMixin,generic.UpdateView):
         username = self.request.user.username
         account = get_object_or_404(CustomUser,username=username)
         return account
+
+
+class AccountDetailView(generic.DetailView):
+    model = CustomUser
+    template_name = "accounts/account_detail.html"
+    context_object_name = "account"
