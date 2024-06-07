@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class Follow(models.Model):
     follower = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name="follower")
 
-    followed = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name="followed")
+    following = models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name="following",null=True)
 
     follow_date = models.DateTimeField(auto_now_add=True)
 
