@@ -47,6 +47,11 @@ def follow(request,username,option):
 
         if int(option) == 0 :
             f.delete()
+            messages.warning(request,"successfully unfollowed this user")
+        else:
+            messages.success(request,"successfully followed this user")
+            
         return HttpResponseRedirect(reverse("accounts:account-detail",kwargs={"slug":username}))
+    
     except CustomUser.DoesNotExist:
         return HttpResponseRedirect(reverse("accounts:account-detail",kwargs={"slug":username}))
