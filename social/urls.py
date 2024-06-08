@@ -8,4 +8,5 @@ urlpatterns = [
     path('',views.SearchResultsView.as_view(),name="search"),
     path('follow/<str:username>/<option>',views.follow,name="follow"),
     path('<str:username>/followers',views.FollowersList.as_view(),name="followers-list"),
+    path('<str:username>/followings',views.FollowingsList.as_view(),name="followings-list"),
 ]

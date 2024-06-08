@@ -68,3 +68,13 @@ class FollowersList(generic.ListView):
         user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
         follows = Follow.objects.filter(following=user)
         return follows
+
+class FollowingsList(generic.ListView):
+    template_name = "social/following_list.html"
+    context_object_name = "follows"
+    pk_url_kwarg = 'username'
+
+    def get_queryset(self,**kwargs):
+        user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
+        follows = Follow.objects.filter(follower=user)
+        return follows
