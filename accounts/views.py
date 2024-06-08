@@ -47,7 +47,7 @@ class AccountDetailView(generic.DetailView):
 
         context.update({
             'follow_status':follow_status,
-            'followings':followings_count,
-            'followers':followers_count,
+            'followings_count':followings_count,
+            'followers_count':followers_count,
         })
         return context

@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.views import generic
 from django.http import HttpResponseRedirect,HttpResponse
 from django.shortcuts import get_object_or_404,redirect
@@ -55,3 +57,14 @@ def follow(request,username,option):
     
     except CustomUser.DoesNotExist:
         return HttpResponseRedirect(reverse("accounts:account-detail",kwargs={"slug":username}))
+
+
+class FollowersList(generic.ListView):
+    template_name = "social/followers_list.html"
+    context_object_name = "follows"
+    pk_url_kwarg = 'username'
+
+    def get_queryset(self,**kwargs):
+        user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
+        follows = Follow.objects.filter(following=user)
+        return follows
