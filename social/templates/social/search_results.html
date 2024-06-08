@@ -24,33 +24,27 @@
                             <h2 class="mt-4"><strong>Sorry ! no users were found for your search!</strong></h2>
                         </div>
                     </div>
-                {% endif %}
-                            {% for user in users %}
-                            <div class="card" style="width: 18rem;">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-                                <div class="card-body">
-                                  <h5 class="card-title">@{{user.username}}</h5>
-                                  <p class="card-text">bio: {{user.bio}}</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                  <li class="list-group-item">{{user.first_name}} {{user.last_name}}</li>
+                    {% else %}
+                    {% for user in users %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        <div class="card-body">
+                            <h5 class="card-title">@{{user.username}}</h5>
+                            <p class="card-text">bio: {{user.bio}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{user.first_name}} {{user.last_name}}</li>
                                 </ul>
                                 <div class="card-body">
-                                    {% if user != request.user %}
-                                        {% if follow_status == True %}
-                                        <a href="{% url 'social:follow' user.username 0 %}" class="btn btn-secondary">Unfollow</a>
-                                        {% else %}
-                                        <a href="{% url 'social:follow' user.username 1 %}" class="btn btn-primary">Follow</a>
-                                        {% endif %}
+                                    <a href="{{ user.get_absolute_url }}" class="btn btn-secondary">View Profile</a>
+                                    </div>
+                                    </div>
+                                    {% endfor %}
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </section>
                                     {% endif %}
-                                        <a href="{{ user.get_absolute_url }}" class="btn btn-secondary">View Profile</a>
-                                </div>
-                              </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </section>
-    {% endblock %}
+                                    {% endblock %}
 </body>
 </html>

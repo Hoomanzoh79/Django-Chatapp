@@ -27,19 +27,9 @@ class SearchResultsView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)
         search_query = self.request.GET.get("q")
-        following = self.model.objects.filter(
-            username__icontains=search_query
-        )
-        follower = self.request.user
-        if following.count() != 0:
-            for user in following.all():
-                # Follow status
-                follow_status = Follow.objects.filter(following=user,follower=follower).exists()
-
-            context.update({
-                'search_query': self.request.GET.get("q"),
-                'follow_status':follow_status,
-            })
+        context.update({
+            "search_query":search_query,
+        })
         return context
 
 def follow(request,username,option):
