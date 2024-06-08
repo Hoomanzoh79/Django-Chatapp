@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends '_base.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,23 +9,29 @@
 </head>
 <body>
     {% block content %}
-            <section id="about">
-                <div class="container px-4">
-                    <div class="row gx-4 justify-content-center">
-                        <div class="col-lg-8">
-                            <h1 class="collection-hero__title">Results for your search</h1>
-                            <div class="breadcrumbs text-uppercase mt-1 mt-lg-2"><span
-                                    class="fw-bold">search : {{ search_query }}</span><span>|</span>
-                                <span
-                                        class="fw-bold">users : {{ users|length }} </span>
-                            </div></div>
-                {% if users|length == 0 %}
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center pt-5 pb-5">
-                            <h2 class="mt-4"><strong>Sorry ! no users were found for your search!</strong></h2>
-                        </div>
+    {% if users|length == 0 %}
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8 mt-3">
+                        <center><h1 class="collection-hero__title">{{users|length}} Results for your search !</h1></center>
                     </div>
+                <div class="card text-center mt-3">
+                    <div class="card-header">
+                        search : {{ search_query }}
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Sorry! there was no user found with your search</h5>
+                      <p><img src="{% static 'images/sad-icon.png' %}" alt=""/></p>
+                      <a href="{% url 'pages:home' %}" class="btn btn-primary">Home</a>
+                    </div>
+                  </div>
+            </section>
                     {% else %}
+                    <section id="about">
+                        <div class="container px-4">
+                            <div class="row gx-4 justify-content-center">
+                            <center><h1 class="collection-hero__title">{{users|length}} Results for your search !</h1></center>
                     {% for user in users %}
                     <div class="card" style="width: 18rem;">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
@@ -43,8 +50,8 @@
                                     </div>
                                     </div>
                                     </div>
-                                    </section>
-                                    {% endif %}
+                                {% endif %}
+                                </section>
                                     {% endblock %}
 </body>
 </html>
