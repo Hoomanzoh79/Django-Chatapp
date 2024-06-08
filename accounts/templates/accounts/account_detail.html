@@ -98,7 +98,9 @@
 <h4>@{{account.username}}</h4>
 <p class="text-secondary mb-1">{{account.bio}}</p>
 <a href="{% url 'social:followers-list' account.username %}">{{followers_count}} followers</a>
-<p>{{followings}} followings</p>
+<p>
+    <a href="{% url 'social:followings-list' account.username %}">{{followings_count}} followings</a>
+</p>
 {% if account != request.user %}
     {% if follow_status == True %}
     <a href="{% url 'social:follow' account.username 0 %}" class="btn btn-secondary">Unfollow</a>
