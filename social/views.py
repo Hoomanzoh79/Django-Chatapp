@@ -30,15 +30,16 @@ class SearchResultsView(generic.ListView):
         following = self.model.objects.filter(
             username__icontains=search_query
         )
-        for user in following.all():
-            follower = self.request.user
-            # Follow status
-            follow_status = Follow.objects.filter(following=user,follower=follower).exists()
+        follower = self.request.user
+        if following.count() != 0:
+            for user in following.all():
+                # Follow status
+                follow_status = Follow.objects.filter(following=user,follower=follower).exists()
 
-        context.update({
-            'search_query': self.request.GET.get("q"),
-            'follow_status':follow_status,
-        })
+            context.update({
+                'search_query': self.request.GET.get("q"),
+                'follow_status':follow_status,
+            })
         return context
 
 def follow(request,username,option):
