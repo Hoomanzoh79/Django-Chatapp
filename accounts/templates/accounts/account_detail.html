@@ -197,9 +197,9 @@
     <h4>{{account.username}} Posts</h4>
     {% for post in posts %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{% static 'images/sad-icon.png' %}" alt="Card image cap">
+        <a href="{% url 'social:post-detail' post.id %}"> <img class="card-img-top" src="{% static 'images/sad-icon.png' %}" alt="Card image cap"></a>
         <div class="card-body">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="{% url 'social:post-detail' post.id %}" class="btn btn-primary">Read More</a>
             </div>
         </div>
     {% endfor %}

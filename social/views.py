@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 
 from accounts.models import CustomUser
-from .models import Follow
+from .models import Follow,Post
 
 class SearchResultsView(generic.ListView):
     model = get_user_model()
@@ -69,3 +69,9 @@ class FollowingsList(generic.ListView):
         user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
         follows = Follow.objects.filter(follower=user)
         return follows
+
+
+class PostDetailView(generic.DetailView):
+    model = Post
+    context_object_name = 'post'
+    template_name = 'social/post_detail.html'
