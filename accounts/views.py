@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 
 from .forms import CustomUserCreationForm,CustomUserChangeForm
 from .models import CustomUser
-from social.models import Follow
+from social.models import Follow,Post
 
 
 class SignUpView(generic.CreateView):
@@ -44,10 +44,13 @@ class AccountDetailView(generic.DetailView):
         # profile stats
         followings_count = Follow.objects.filter(follower=following_user).count()
         followers_count = Follow.objects.filter(following=following_user).count()
+        # profile posts
+        posts = Post.objects.filter(author=following_user)
 
         context.update({
             'follow_status':follow_status,
             'followings_count':followings_count,
             'followers_count':followers_count,
+            'posts':posts,
         })
         return context
