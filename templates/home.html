@@ -23,7 +23,7 @@
                             <center>
                             <h2>Search the username that you want to follow</h2>
                             <form action="{% url 'social:search' %}" method="get">
-                                <input type="search" id="user-search" name="q" placeholder="@username" class="form-control"/>
+                                <input type="search" id="user-search" name="q" placeholder="@username" class="form-control" required/>
                                 <button type="submit" class="btn btn-success mt-3">Search</button>
                               </form>
                             </center>
