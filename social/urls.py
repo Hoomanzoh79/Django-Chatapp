@@ -10,4 +10,5 @@ urlpatterns = [
     path('<str:username>/followers',views.FollowersList.as_view(),name="followers-list"),
     path('<str:username>/followings',views.FollowingsList.as_view(),name="followings-list"),
     path('post/<int:pk>',views.PostDetailView.as_view(),name="post-detail"),
+    path('post/create',views.PostCreateView.as_view(),name='post-create'),
 ]

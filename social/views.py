@@ -9,6 +9,7 @@ from django.contrib.auth import get_user_model
 
 from accounts.models import CustomUser
 from .models import Follow,Post
+from .forms import PostForm
 
 class SearchResultsView(generic.ListView):
     model = get_user_model()
@@ -75,3 +76,8 @@ class PostDetailView(generic.DetailView):
     model = Post
     context_object_name = 'post'
     template_name = 'social/post_detail.html'
+
+class PostCreateView(generic.CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = "social/post_create.html"
