@@ -81,3 +81,11 @@ class PostCreateView(generic.CreateView):
     model = Post
     form_class = PostForm
     template_name = "social/post_create.html"
+
+    def form_valid(self, form):
+        self.author = self.request.user
+        form.instance.author = self.author
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse("accounts:account-detail",kwargs={"slug":self.author.username})
