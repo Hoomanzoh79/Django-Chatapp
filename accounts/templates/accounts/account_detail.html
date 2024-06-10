@@ -123,7 +123,8 @@
 {% endif %}
 
 {% if account == request.user %}
-<a href="{% url 'accounts:edit-account' %}" class="btn btn-success">Edit Profile</a>
+<a href="{% url 'accounts:edit-account' %}" class="btn btn-dark">Edit Profile</a>
+<a href="{% url 'social:post-create' %}" class="btn btn-dark">Create Post</a>
 {% endif %}
 
 </div>
