@@ -93,7 +93,11 @@
 <div class="card">
 <div class="card-body">
 <div class="d-flex flex-column align-items-center text-center">
-<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+{% if account.profile_picture %}
+<img class="rounded-circle" src="{{ account.profile_picture.url }}" alt="Image"  width="150">
+{% else %}
+<div class="small font-italic text-muted mb-4">This user has no profile picture yet!</div>
+{% endif %}
 <div class="mt-3">
 <h4>@{{account.username}}</h4>
 <p class="text-secondary mb-1">{{account.bio}}</p>
