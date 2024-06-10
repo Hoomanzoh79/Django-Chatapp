@@ -11,3 +11,4 @@ selenium
 
 # 3rd party
 python-decouple
+pillow
