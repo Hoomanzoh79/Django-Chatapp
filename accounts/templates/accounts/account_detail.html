@@ -96,7 +96,7 @@
 {% if account.profile_picture %}
 <img class="rounded-circle" src="{{ account.profile_picture.url }}" alt="Image"  width="150">
 {% else %}
-<div class="small font-italic text-muted mb-4">This user has no profile picture yet!</div>
+<img class="rounded-circle" src="{% static 'images/no-picture.jpg' %}" alt="Image"  width="150">
 {% endif %}
 <div class="mt-3">
 <h4>@{{account.username}}</h4>

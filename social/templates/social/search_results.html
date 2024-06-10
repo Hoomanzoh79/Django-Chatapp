@@ -34,7 +34,11 @@
                             <center><h1 class="collection-hero__title">{{users|length}} Results for your search !</h1></center>
                     {% for user in users %}
                     <div class="card" style="width: 18rem;">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                        {% if user.profile_picture %}
+                            <img class="rounded-circle" src="{{ user.profile_picture.url }}" alt="Image"  width="150">
+                            {% else %}
+                            <img class="rounded-circle" src="{% static 'images/no-picture.jpg' %}" alt="Image"  width="150">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">@{{user.username}}</h5>
                             <p class="card-text">bio: {{user.bio}}</p>

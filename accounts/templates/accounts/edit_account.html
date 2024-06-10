@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 {% extends '_base.html' %}
-
+{% load static %}
 {% block page_title %} Edit Profile {% endblock %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -96,11 +96,10 @@ color:#69707a;
 <div class="card-body text-center">
 
 {% if user.profile_picture %}
-<img class="img-account-profile rounded-circle mb-2" src="{{ user.profile_picture.url }}" alt height="400px" width="350px">
+<img class="img-account-profile rounded-circle mb-2" src="{{ user.profile_picture.url }}" width="150">
 {% else %}
-<div class="small font-italic text-muted mb-4">You have not uploaded any profile picture yet!</div>
+<img class="rounded-circle" src="{% static 'images/no-picture.jpg' %}" alt="Image"  width="150">
 {% endif %}
-
 
 </div>
 </div>
