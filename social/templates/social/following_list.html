@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% extends '_base.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,11 @@
                     <div class="row gx-4 justify-content-center">
                             {% for follow in follows %}
                             <div class="card" style="width: 18rem;">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                                {% if follow.following.profile_picture %}
+                                <img class="rounded-circle" src="{{ follow.following.profile_picture.url }}" alt="Image"  width="150">
+                                {% else %}
+                                <img class="rounded-circle" src="{% static 'images/no-picture.jpg' %}" alt="Image"  width="150">
+                                {% endif %}
                                 <div class="card-body">
                                   <h5 class="card-title">@{{follow.following.username}}</h5>
                                   <p class="card-text">bio: {{follow.following.bio}}</p>
