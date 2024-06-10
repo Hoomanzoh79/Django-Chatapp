@@ -11,8 +11,8 @@ class CustomUserAdmin(UserAdmin):
     list_editable = ['is_verified']
     add_form = CustomUserCreationForm
     fieldsets = UserAdmin.fieldsets + (
-        (None, {'fields': ('phone_number',)}),
+        (None, {'fields': ('phone_number','profile_picture')}),
     )
     add_fieldsets = UserAdmin.add_fieldsets + (
-        (None, {'fields': ('phone_number',)}),
+        (None, {'fields': ('phone_number','profile_picture')}),
     )

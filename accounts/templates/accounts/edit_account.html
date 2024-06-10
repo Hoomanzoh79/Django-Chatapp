@@ -86,11 +86,13 @@ color:#69707a;
 <div class="card-header">Profile Picture</div>
 <div class="card-body text-center">
 
-<img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt>
+{% if user.profile_picture %}
+<img class="img-account-profile rounded-circle mb-2" src="{{ user.profile_picture.url }}" alt>
+{% else %}
+<div class="small font-italic text-muted mb-4">You have not uploaded any profile picture yet!</div>
+{% endif %}
 
-<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
 
-<button class="btn btn-primary" type="button">Upload new image</button>
 </div>
 </div>
 </div>
@@ -102,9 +104,15 @@ color:#69707a;
 
 <form method="post" action="">
 {% csrf_token %}
+{{form.errors}}
 <div class="mb-3">
 <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
 <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="{{user.username}}" name="username" required>
+</div>
+
+<div class="mb-3">
+    <label class="small mb-1" for="inputPicture">Profile Picture (JPG or PNG no larger than 5 MB)</label>
+    <input class="form-control" id="inputPicture" type="file" placeholder="Upload picture" name="profile_picture">
 </div>
 
 <div class="row gx-3 mb-3">
