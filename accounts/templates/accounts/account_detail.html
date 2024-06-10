@@ -101,9 +101,17 @@
 <div class="mt-3">
 <h4>@{{account.username}}</h4>
 <p class="text-secondary mb-1">{{account.bio}}</p>
+{% if followers_count == 0 %}
+<span class="text-dark mb-1 text-decoration-none">{{followers_count}} followers</span>
+{% else %}
 <a href="{% url 'social:followers-list' account.username %}" class="text-dark mb-1 text-decoration-none">{{followers_count}} followers</a>
+{% endif %}
 <p>
+    {% if followings_count == 0 %}
+    <span class="text-dark mb-1 text-decoration-none">{{followings_count}} followings</span>
+    {% else %}
     <a href="{% url 'social:followings-list' account.username %}" class="text-dark mb-1 text-decoration-none">{{followings_count}} followings</a>
+    {% endif %}
 </p>
 {% if account != request.user %}
     {% if follow_status == True %}
