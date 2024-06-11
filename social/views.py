@@ -82,12 +82,16 @@ class PostDetailView(generic.DetailView):
         post_id = self.kwargs['pk']
         post = get_object_or_404(Post,id=post_id)
         user = self.request.user
+        # check if user already liked the post or not
         like_status = False
+        # like counts
+        like_counts = post.likes.count()
         if user in post.likes.all():
             like_status = True
         context.update(
             {
                 'like_status':like_status,
+                'like_counts':like_counts,
             }
         )
         return context

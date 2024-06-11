@@ -305,6 +305,11 @@ Template sidebar
 {% else %}
 <a href="{% url 'social:like' post.id 1 %}"><i class="fa fa-heart-o" style="font-size:48px;color:red"></i></a>
 {% endif %}
+{% if like_counts == 1 %}
+<p>{{like_counts}} like</p>
+{% else %}
+<p>{{like_counts}} likes</p>
+{% endif %}
 <p class="lead">{{post.caption}}</p>
 </li>
 
