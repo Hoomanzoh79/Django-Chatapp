@@ -118,7 +118,6 @@ def like(request,pk,option):
         post.likes.remove(user)
     else:
         post.likes.add(user)
-        messages.success(request,"you liked this post")
             
     return redirect(post.get_absolute_url())
     
