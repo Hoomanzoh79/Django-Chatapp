@@ -11,5 +11,5 @@ urlpatterns = [
     path('<str:username>/followings',views.FollowingsList.as_view(),name="followings-list"),
     path('post/<int:pk>',views.PostDetailView.as_view(),name="post-detail"),
     path('post/create',views.PostCreateView.as_view(),name='post-create'),
-    path('post/like/<int:pk>',views.like,name="like"),
+    path('post/like/<int:pk>/<option>',views.like,name="like"),
 ]

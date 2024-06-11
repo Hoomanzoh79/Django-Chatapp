@@ -300,8 +300,11 @@ Template sidebar
 <i class="fa fa-calendar-o"></i> {{post.datetime_created}}
 </li>
 </ul>
-<i class="fa fa-heart-o" style="font-size:48px;color:red"></i>
-<a href="{% url 'social:like' post.id %}"><i class="fa fa-heart" style="font-size:48px;color:red"></i></a>
+{% if like_status == True %}
+<a href="{% url 'social:like' post.id 0 %}"><i class="fa fa-heart" style="font-size:48px;color:red"></i></a>
+{% else %}
+<a href="{% url 'social:like' post.id 1 %}"><i class="fa fa-heart-o" style="font-size:48px;color:red"></i></a>
+{% endif %}
 <p class="lead">{{post.caption}}</p>
 </li>
 
