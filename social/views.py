@@ -77,6 +77,21 @@ class PostDetailView(generic.DetailView):
     context_object_name = 'post'
     template_name = 'social/post_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        post_id = self.kwargs['pk']
+        post = get_object_or_404(Post,id=post_id)
+        user = self.request.user
+        like_status = False
+        if user in post.likes.all():
+            like_status = True
+        context.update(
+            {
+                'like_status':like_status,
+            }
+        )
+        return context
+
 class PostCreateView(generic.CreateView):
     model = Post
     form_class = PostForm
@@ -91,11 +106,15 @@ class PostCreateView(generic.CreateView):
         return reverse("accounts:account-detail",kwargs={"slug":self.author.username})
 
 
-def like(request,pk):
+def like(request,pk,option):
     user = request.user
     post = get_object_or_404(Post,id=pk)
-    post.likes.add(user)
-    messages.success(request,"you liked this post")
+
+    if int(option) == 0:
+        post.likes.remove(user)
+    else:
+        post.likes.add(user)
+        messages.success(request,"you liked this post")
             
     return redirect(post.get_absolute_url())
     
