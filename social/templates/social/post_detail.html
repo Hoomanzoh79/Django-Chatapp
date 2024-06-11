@@ -278,6 +278,15 @@ Template sidebar
 <section>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container pb50">
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 <div class="row">
 <div class="col-md-9 mb40">
 <article>
@@ -291,8 +300,12 @@ Template sidebar
 <i class="fa fa-calendar-o"></i> {{post.datetime_created}}
 </li>
 </ul>
+<i class="fa fa-heart-o" style="font-size:48px;color:red"></i>
+<a href="{% url 'social:like' post.id %}"><i class="fa fa-heart" style="font-size:48px;color:red"></i></a>
 <p class="lead">{{post.caption}}</p>
 </li>
+
+
 </ul>
 <hr class="mb40">
 <h4 class="mb40 text-uppercase font500">Comments</h4>

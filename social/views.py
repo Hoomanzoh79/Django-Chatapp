@@ -89,3 +89,13 @@ class PostCreateView(generic.CreateView):
     
     def get_success_url(self):
         return reverse("accounts:account-detail",kwargs={"slug":self.author.username})
+
+
+def like(request,pk):
+    user = request.user
+    post = get_object_or_404(Post,id=pk)
+    post.likes.add(user)
+    messages.success(request,"you liked this post")
+            
+    return redirect(post.get_absolute_url())
+    
