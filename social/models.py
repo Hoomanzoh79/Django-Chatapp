@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 
 class Follow(models.Model):
@@ -21,3 +22,7 @@ class Post(models.Model):
     picture = models.ImageField(upload_to='social/post_pictures')
     datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse("social:post-detail", kwargs={"pk": self.pk})
+    
