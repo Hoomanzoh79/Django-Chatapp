@@ -292,10 +292,17 @@ Template sidebar
 <div class="col-md-9 mb40">
 <article>
 <img src="{{post.picture.url}}" alt class="img-fluid mb30">
-<div class="post-content">
+<div class="post-content mt-3">
 <ul class="post-meta list-inline">
 <li class="list-inline-item">
-<i class="fa fa-user-circle-o"></i> <a href="{% url 'accounts:account-detail' post.author %}" class="text-dark mb-1 text-decoration-none">{{post.author}}</a>
+{% if post.author.profile_picture %}
+<a href="{% url 'accounts:account-detail' post.author %}" class="text-dark mb-1 text-decoration-none">    
+    <img class="rounded-circle" src="{{ post.author.profile_picture.url }}" alt="Image"  width="80px" height="80px">
+</a>
+{% else %}
+<i class="fa fa-user-circle-o"></i>
+{% endif %}
+<a href="{% url 'accounts:account-detail' post.author %}" class="text-dark mb-1 text-decoration-none">{{post.author}}</a>
 </li>
 <li class="list-inline-item">
 <i class="fa fa-calendar-o"></i> {{post.datetime_created}}
@@ -321,11 +328,20 @@ Template sidebar
 {% for comment in comments|only_active_comments %}
     {% if comment.is_parent %}
 <div class="media mb40">
+{% if comment.author.profile_picture %}
+<a href="{% url 'accounts:account-detail' comment.author %}" class="text-dark mb-1 text-decoration-none">    
+    <img class="rounded-circle" src="{{ comment.author.profile_picture.url }}" alt="Image"  width="80px" height="80px">
+</a>
+{% else %}
 <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
+{% endif %}
+
 <div class="media-body">
-<h5 class="mt-0 font400 clearfix">
-<a href="#" class="float-right">Reply</a>
-{{comment.author}}</h5>{{comment.body}}
+<a href="{% url 'accounts:account-detail' comment.author %}" class="text-dark mb-1 text-decoration-none">   
+<h5 class="mt-0 font400 clearfix">{{comment.author}}</h5>
+</a>
+
+{{comment.body}}
 <form action="{% url 'social:comment-create' post.id %}" method="POST" id="main_form" class="comment_form">
     <div>
         &nbsp; &nbsp; &nbsp;<label for="comment">Reply here</label>
