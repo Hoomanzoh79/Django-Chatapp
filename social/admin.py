@@ -15,4 +15,4 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     model = Comment
-    list_display = ['id','post', 'author', 'active','body','datetime_created']
+    list_display = ['id','post', 'author', 'active','body','datetime_created','parent']
