@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 {% extends '_base.html' %}
 {% load static %}
+{% load comment_tags %}
 {% block page_title %} post detail {% endblock %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -317,47 +318,30 @@ Template sidebar
 </ul>
 <hr class="mb40">
 <h4 class="mb40 text-uppercase font500">Comments</h4>
+{% for comment in comments|only_active_comments %}
+    {% if comment.is_parent %}
 <div class="media mb40">
 <i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
 <div class="media-body">
 <h5 class="mt-0 font400 clearfix">
 <a href="#" class="float-right">Reply</a>
-Jane Doe</h5> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+{{comment.author}}</h5>{{comment.body}}
 </div>
-</div>
-<div class="media mb40">
-<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-<div class="media-body">
-<h5 class="mt-0 font400 clearfix">
-<a href="#" class="float-right">Reply</a>
-Jane Doe</h5> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-</div>
-</div>
-<div class="media mb40">
-<i class="d-flex mr-3 fa fa-user-circle-o fa-3x"></i>
-<div class="media-body">
-<h5 class="mt-0 font400 clearfix">
-<a href="#" class="float-right">Reply</a>
-Jane Doe</h5> Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-</div>
+{% endif %}
+{% for replies in comment.children %}
+<h3>&nbsp; &nbsp; &nbsp; <b>{{ comment.author }} : </b> {{ replies.content }}</h3>
+{% endfor %}
+{% endfor %}
 </div>
 <hr class="mb40">
 <h4 class="mb40 text-uppercase font500">Post a comment</h4>
-<form role="form">
+<form role="form" method="post" action="{% url 'social:comment-create' post.id %}">
+{% csrf_token %}
 <div class="form-group">
-<label>Name</label>
-<input type="text" class="form-control" placeholder="John Doe">
-</div>
-<div class="form-group">
-<label>Email</label>
-<input type="email" class="form-control" placeholder="john@doe.com">
-</div>
-<div class="form-group">
-<label>Comment</label>
-<textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+<textarea class="form-control" rows="5" placeholder="Comment" name="body"></textarea>
 </div>
 <div class="clearfix float-right mt-3">
-<button type="button" class="btn btn-primary btn-lg">Submit</button>
+<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 </div>
 </form>
 </div>
