@@ -8,7 +8,13 @@
             <div class="container px-4">
                 <a class="navbar-brand" href="{% url 'pages:home' %}" title="Home"><i class="fa fa-home" style="font-size:30px;color:rgb(255, 255, 255)"></i></a>
                 {% if user.is_authenticated %}
+                    {% if user.profile_picture %}
+                <a href="{% url 'accounts:account-detail' user.username %}" class="text-dark mb-1 text-decoration-none">    
+                    <img class="rounded-circle" src="{{ user.profile_picture.url }}" alt="Image"  width="60px" height="60px">
+                </a>
+                {% else %}
                 <a class="navbar-brand" href="{% url 'accounts:account-detail' user.username %}" title="My Profile"><i class="fa fa-user-circle" style="font-size:40px;color:rgb(255, 255, 255)"></i></a>
+                {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
