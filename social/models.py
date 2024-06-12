@@ -31,7 +31,7 @@ class Comment(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='comments')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     body = models.TextField()
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     parent = models.ForeignKey('self' , null=True , blank=True , on_delete=models.CASCADE , related_name='replies')
 
     datetime_created = models.DateTimeField(auto_now_add=True)
