@@ -6,10 +6,11 @@ from django.shortcuts import get_object_or_404,redirect
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from accounts.models import CustomUser
-from .models import Follow,Post
-from .forms import PostForm
+from .models import Follow,Post,Comment
+from .forms import PostForm,CommentForm
 
 class SearchResultsView(generic.ListView):
     model = get_user_model()
@@ -51,6 +52,17 @@ def follow(request,username,option):
         return HttpResponseRedirect(reverse("accounts:account-detail",kwargs={"slug":username}))
 
 
+def like(request,pk,option):
+    user = request.user
+    post = get_object_or_404(Post,id=pk)
+
+    if int(option) == 0:
+        post.likes.remove(user)
+    else:
+        post.likes.add(user)
+            
+    return redirect(post.get_absolute_url())
+
 class FollowersList(generic.ListView):
     template_name = "social/followers_list.html"
     context_object_name = "follows"
@@ -71,31 +83,6 @@ class FollowingsList(generic.ListView):
         follows = Follow.objects.filter(follower=user)
         return follows
 
-
-class PostDetailView(generic.DetailView):
-    model = Post
-    context_object_name = 'post'
-    template_name = 'social/post_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(PostDetailView, self).get_context_data(**kwargs)
-        post_id = self.kwargs['pk']
-        post = get_object_or_404(Post,id=post_id)
-        user = self.request.user
-        # check if user already liked the post or not
-        like_status = False
-        # like counts
-        like_counts = post.likes.count()
-        if user in post.likes.all():
-            like_status = True
-        context.update(
-            {
-                'like_status':like_status,
-                'like_counts':like_counts,
-            }
-        )
-        return context
-
 class PostCreateView(generic.CreateView):
     model = Post
     form_class = PostForm
@@ -109,15 +96,60 @@ class PostCreateView(generic.CreateView):
     def get_success_url(self):
         return reverse("accounts:account-detail",kwargs={"slug":self.author.username})
 
+class PostDetailView(generic.DetailView):
+    model = Post
+    context_object_name = 'post'
+    template_name = 'social/post_detail.html'
 
-def like(request,pk,option):
-    user = request.user
-    post = get_object_or_404(Post,id=pk)
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        post_id = self.kwargs['pk']
+        post = get_object_or_404(Post,id=post_id)
+        user = self.request.user
+        # like counts
+        like_counts = post.likes.count()
+        # check if user already liked the post or not
+        like_status = False
+        if user in post.likes.all():
+            like_status = True
+        # comments
+        connected_comments = Comment.objects.filter(post=self.get_object())
+        number_of_comments = connected_comments.count()
+        context.update(
+            {
+                'like_status':like_status,
+                'like_counts':like_counts,
+                'comments':connected_comments,
+                'number_of_comments':number_of_comments,
+                'comment_form':CommentForm(),
+            }
+        )
+        return context
 
-    if int(option) == 0:
-        post.likes.remove(user)
-    else:
-        post.likes.add(user)
-            
-    return redirect(post.get_absolute_url())
+
+class CommentCreateView(LoginRequiredMixin,generic.CreateView):
+    model = Comment
+    form_class = CommentForm
+    redirect_field_name = ""
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.author = self.request.user
+
+        post_id = self.kwargs.get("pk")
+        post = get_object_or_404(Post, id=post_id)
+        obj.post = post
+
+        try:
+            parent = form.cleaned_data['parent']
+        except:
+            parent=None
+        obj.parent = parent
+
+        if obj.author.is_superuser and obj.author.is_staff:
+            obj.active = True
+        else :
+            messages.success(self.request,"Your comment has been sent and it will show after we've checked it")
+        
+        return super().form_valid(form)
     
