@@ -146,10 +146,7 @@ class CommentCreateView(LoginRequiredMixin,generic.CreateView):
             parent=None
         obj.parent = parent
 
-        if obj.author.is_superuser and obj.author.is_staff:
-            obj.active = True
-        else :
-            messages.success(self.request,"Your comment has been sent and it will show after we've checked it")
+        messages.success(self.request,"You wrote a comment on this post")
         
         return super().form_valid(form)
     
