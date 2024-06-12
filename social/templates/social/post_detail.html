@@ -326,10 +326,16 @@ Template sidebar
 <h5 class="mt-0 font400 clearfix">
 <a href="#" class="float-right">Reply</a>
 {{comment.author}}</h5>{{comment.body}}
+<form action="{% url 'social:comment-create' post.id %}" method="POST" id="main_form" class="comment_form">
+    <div>
+        &nbsp; &nbsp; &nbsp;<label for="comment">Reply here</label>
+       &nbsp; &nbsp; &nbsp;<input type="text" name="body"> <input type="hidden" value="{{ comment.pk }}" name="parent"> {% csrf_token %} <button type="submit" value="Post">reply</div>
+    </div>
+ </form>
 </div>
 {% endif %}
 {% for replies in comment.children %}
-<h3>&nbsp; &nbsp; &nbsp; <b>{{ comment.author }} : </b> {{ replies.content }}</h3>
+<h3>&nbsp; &nbsp; &nbsp; <b>{{ comment.author }} : </b> {{ replies.body }}</h3>
 {% endfor %}
 {% endfor %}
 </div>
