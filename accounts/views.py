@@ -34,7 +34,7 @@ class EditAccountView(LoginRequiredMixin,generic.UpdateView):
         return super().form_valid(form)
 
 
-class AccountDetailView(generic.DetailView):
+class AccountDetailView(LoginRequiredMixin,generic.DetailView):
     model = CustomUser
     template_name = "accounts/account_detail.html"
     context_object_name = "account"
