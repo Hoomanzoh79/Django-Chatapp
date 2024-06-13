@@ -27,4 +27,4 @@ class Message(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.author.username}: {self.content}'
+        return f'{self.author.username}: {self.content} time: {self.datetime}'
