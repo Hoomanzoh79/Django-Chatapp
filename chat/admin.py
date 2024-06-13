@@ -10,4 +10,4 @@ class RoomAdmin(admin.ModelAdmin):
 @admin.register(Message)
 class MessageAdmin(admin.ModelAdmin):
     model = Message
-    list_display = ["room","content","author"]
+    list_display = ["room","content","author","datetime"]
