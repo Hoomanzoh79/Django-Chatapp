@@ -119,7 +119,7 @@
     {% else %}
     <a href="{% url 'social:follow' account.username 1 %}" class="btn btn-primary">Follow</a>
     {% endif %}
-    <button class="btn btn-outline-primary">Message</button>
+    <a class="btn btn-outline-primary" href="{% url 'chat:message' user.username account.username %}">Message</a>
 {% endif %}
 
 {% if account == request.user %}
