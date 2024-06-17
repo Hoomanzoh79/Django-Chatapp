@@ -324,7 +324,7 @@ Template sidebar
 
 </ul>
 <hr class="mb40">
-<h4 class="mb40 text-uppercase font500">Comments</h4>
+<h4 class="mb40 text-uppercase font500">Comments({{comments|only_active_comments|length}})</h4>
 {% for comment in comments|only_active_comments %}
     {% if comment.is_parent %}
 <div class="media mb40">
@@ -341,18 +341,22 @@ Template sidebar
 <h5 class="mt-0 font400 clearfix">{{comment.author}}</h5>
 </a>
 
-{{comment.body}}
+<p class="lead">{{comment.body}}</p>
 <form action="{% url 'social:comment-create' post.id %}" method="POST" id="main_form" class="comment_form">
     <div>
-        &nbsp; &nbsp; &nbsp;<label for="comment">Reply here</label>
-       &nbsp; &nbsp; &nbsp;<input type="text" name="body"> <input type="hidden" value="{{ comment.pk }}" name="parent"> {% csrf_token %} <button type="submit" value="Post">reply</div>
+    <label for="comment">Reply here: </label>
+   <input type="text" name="body" style="border-color: #4782d3;"> <input type="hidden" value="{{ comment.pk }}" name="parent"> {% csrf_token %} <button class="btn btn-primary" type="submit" style="font-size:14px" value="Post"><i class="fa fa-reply"></i></button>
     </div>
  </form>
+<br><div style="border-style:inset ;" class="p-3 mb-2 bg-secondary text-white">
+    Replies({{comment.children|length}}):
+    {% for replies in comment.children %}
+    <br>{{ comment.author }} : {{ replies.body }}
+    {% endfor %}
+</div>
+
 </div>
 {% endif %}
-{% for replies in comment.children %}
-<h3>&nbsp; &nbsp; &nbsp; <b>{{ comment.author }} : </b> {{ replies.body }}</h3>
-{% endfor %}
 {% endfor %}
 </div>
 <hr class="mb40">
@@ -363,7 +367,7 @@ Template sidebar
 <textarea class="form-control" rows="5" placeholder="Comment" name="body"></textarea>
 </div>
 <div class="clearfix float-right mt-3">
-<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+<button type="submit" class="btn btn-primary btn-lg">send comment</button>
 </div>
 </form>
 </div>
