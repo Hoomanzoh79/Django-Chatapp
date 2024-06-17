@@ -8,14 +8,14 @@ from django.db.models import Q
 
 from .models import Room
 
-class ChatIndexView(TemplateView):
-    template_name = "chat/chat_index.html"
-    redirect_field_name = ""
+# class ChatIndexView(TemplateView):
+#     template_name = "chat/chat_index.html"
+#     redirect_field_name = ""
 
-    def get_context_data(self,**kwargs):
-        context = super().get_context_data(**kwargs)
-        context["rooms"] = Room.objects.all()
-        return context
+#     def get_context_data(self,**kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["rooms"] = Room.objects.all()
+#         return context
 
 
 def message(request,user1,user2):
