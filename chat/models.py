@@ -2,11 +2,9 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 class Room(models.Model):
-    name = models.CharField(max_length=30,)
-    online = models.ManyToManyField(get_user_model(),blank=True)
-
-    def get_online_count(self):
-        return self.online.count()
+    user1 = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL, related_name = 'user1')
+    user2 = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL, related_name = 'user2')
+    name = models.CharField(max_length=100,unique=True)
 
     def join(self, user):
         self.online.add(user)
@@ -17,7 +15,7 @@ class Room(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.name} : ({self.get_online_count()})'
+        return f'{self.name}'
 
 
 class Message(models.Model):

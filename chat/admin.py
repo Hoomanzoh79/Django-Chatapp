@@ -4,7 +4,7 @@ from .models import Room,Message
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     model = Room
-    list_display = ["name"]
+    list_display = ["name","user1","user2"]
 
 
 @admin.register(Message)
