@@ -13,21 +13,36 @@
                 background-color: #FFFFFF;
                 resize: none;
             }
-
-            #onlineUsersSelector {
-                height: 300px;
-            }
         </style>
     </head>
     {% block content %}
     <section>
-        <div class="container mt-3 p-5">
-            <h2>django-channels-chat</h2>
+        <div class="container mt-1 p-5">
+            <center>
+            {% if target_user.profile_picture %}
+            <a href="{% url 'accounts:account-detail' target_user.username %}" class="text-dark mb-1 text-decoration-none">    
+                <img class="rounded-circle" src="{{ target_user.profile_picture.url }}" alt="Image"  width="80">
+            </a>
+            {% else %}
+            <a class="navbar-brand" href="{% url 'accounts:account-detail' target_user.username %}"><img class="rounded-circle" src="{% static 'images/no-picture.jpg' %}" alt="Image"  width="150"></a>
+            {% endif %}   
+
+
+            <h2>{{target_user.username}}</h2>
+            </center>
             <div class="row">
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-12">
                     <div class="mb-2">
-                        <label for="chatLog">Room: {{ room }}</label>
-                        <textarea class="form-control" id="chatLog" readonly></textarea>
+                        <textarea style="width:100%;
+                        height: 400px;
+                        padding: 12px 20px;
+                        box-sizing: border-box;
+                        border: 2px solid #ccc;
+                        border-radius: 4px;
+                        background-color: #f8f8f8;
+                        font-size: 16px;
+                        display: flex; flex-direction: row; align-items: center; justify-content: center;" class="form-control" id="chatLog" readonly>
+                        </textarea>
                     </div>
                     <div class="input-group mt-3">
                         <input type="text" class="form-control" id="chatMessageInput" placeholder="Enter your chat message">
@@ -35,11 +50,6 @@
                             <button style="font-size:24px" id="chatMessageSend" type="button" class="btn btn-primary"><i class="fa fa-send"></i></button>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <label for="onlineUsers">Online users</label>
-                    <select multiple class="form-control" id="onlineUsersSelector">
-                    </select>
                 </div>
             </div>
             {{ room.name|json_script:"roomName" }}
