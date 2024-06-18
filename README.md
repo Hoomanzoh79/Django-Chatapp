@@ -1,5 +1,5 @@
-<p align="center">
-<span style="font-size:0.8em;">Django Chatapp</span>
+<p align="center" style="font-size:0.8em;">
+Django Chatapp
 </p>
 
 
