@@ -32,6 +32,10 @@ Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-An
 <h2 align="center">
  Demo
 </h2>
+<space>
+<p align="center">
+	the video will show you a demo of the project and what are the features.
+</p>
 
 https://github.com/Hoomanzoh79/Django-Chatapp/assets/86908448/a46eab14-c618-417d-9bc8-852683cf22a5
 
