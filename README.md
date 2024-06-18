@@ -2,9 +2,9 @@
 Django Chatapp
 </h1>
 
-<p align="center">
+<h3 align="center">
  This is a chatapp project using django channels and websockets 
-</p>
+</h3>
 
 <h2 align="center">
 Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Toolbox.png" alt="Toolbox" width="25" height="25" />:
