@@ -2,14 +2,15 @@
 Django Chatapp
 </h1>
 
-
+<p align="center">
  This is a chatapp project using django channels and websockets 
+</p>
 
 <h2 align="center">
 Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Toolbox.png" alt="Toolbox" width="25" height="25" />:
 </h2>
 
-<div >
+<div align="center">
 	<img src="https://skillicons.dev/icons?i=python"/>
 	<img src="https://skillicons.dev/icons?i=django"/>
 	<img src="https://skillicons.dev/icons?i=docker"/>
