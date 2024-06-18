@@ -9,6 +9,16 @@ Django Chatapp
 Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Toolbox.png" alt="Toolbox" width="25" height="25" />:
 </h2>
 
+<div >
+	<img src="https://skillicons.dev/icons?i=python"/>
+	<img src="https://skillicons.dev/icons?i=django"/>
+	<img src="https://skillicons.dev/icons?i=docker"/>
+	<img src="https://skillicons.dev/icons?i=redis"/>
+ <img src="https://skillicons.dev/icons?i=html"/>
+  <img src="https://skillicons.dev/icons?i=css"/>
+ <img src="https://skillicons.dev/icons?i=javascript"/>
+</div>
+
 
 
 
