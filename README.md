@@ -3,8 +3,8 @@ Django Chatapp
 </h1>
 
 
- This is a chatapp using django channels and websockets
-
+ This is a chatapp project using django channels and websockets 
+# Languages and tools <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Toolbox.png" alt="Toolbox" width="25" height="25" />:
 
 
 
