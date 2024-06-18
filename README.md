@@ -1,5 +1,5 @@
 <p align="center">
-# Django-Chatapp
+<span style="font-size:0.5em;">Django Chatapp</span>
 </p>
 
 
