@@ -1,6 +1,6 @@
-<p align="center" style="font-size:0.8em;">
+<h1 align="center">
 Django Chatapp
-</p>
+</h1>
 
 
  This is a chatapp using django channels and websockets
