@@ -1,4 +1,8 @@
+<p align="center">
 # Django-Chatapp
+</p>
+
+
  This is a chatapp using django channels and websockets
 
 
