@@ -1,6 +1,7 @@
 # general modules
 django
 channels[daphne]
+django-allauth[socialaccount]
 
 # channel layers
 redis
