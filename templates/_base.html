@@ -20,15 +20,12 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><p class="nav-link">Welcome: {{user.username}}</p></li>
                         <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <button class="btn btn-danger" type="submit">logout</button>
-                        </form>
+                            <li class="nav-item"><a class="btn btn-danger" href="{% url 'account_logout' %}">Logout</a></li>
                         </li>
                         {% else %}
                         <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="btn btn-primary" href="{% url 'login' %}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Signup</a></li>
+                        <li class="nav-item"><a class="btn btn-primary" href="{% url 'account_login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Signup</a></li>
                         </ul>
                         {% endif %}
                     </ul>

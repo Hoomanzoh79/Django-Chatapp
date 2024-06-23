@@ -21,8 +21,9 @@ from django.urls import path,include
 urlpatterns = [
     path('chat/',include('chat.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/',include('django.contrib.auth.urls')),
+    # path('accounts/',include('django.contrib.auth.urls')),
     path('accounts/',include('accounts.urls')),
+    path('accounts/',include('allauth.urls')),
     path('social/',include('social.urls')),
     path('',include('pages.urls')),
 ]

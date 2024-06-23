@@ -1,5 +1,3 @@
-from django.forms import BaseModelForm
-from django.http import HttpResponse
 from django.views import generic
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,15 +5,9 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 
-from .forms import CustomUserCreationForm,CustomUserChangeForm
+from .forms import CustomUserChangeForm
 from .models import CustomUser
 from social.models import Follow,Post
-
-
-class SignUpView(generic.CreateView):
-    form_class = CustomUserCreationForm
-    template_name = "accounts/signup.html"
-    success_url = reverse_lazy("login")
 
 
 class EditAccountView(LoginRequiredMixin,generic.UpdateView):
