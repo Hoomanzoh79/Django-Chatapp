@@ -1,20 +1,65 @@
 {% extends '_base.html' %}
+{% load socialaccount %}
 
-{% block page_title %} login {% endblock %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block content %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <section>
-    <center><h1>Login</h1></center>
-    <div class="d-flex justify-content-center mt-5" dir="ltr">
-        <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">
-            <form action="" method="post">
+    {% block page_title%} Login {% endblock %}
+  </head>
+
+  {% block content %}
+  <section>
+    <div class="container text-dark mt-5">
+        <div class="row justify-content-md-center">
+          <div class="col-md-5 bg-grey p-3">
+            <form class="form-signin" method="post" action="{% url 'account_login' %}">
+                <h1 class="h3 mb-3">Please sign in</h1>
+                {{ form.non_field_errors | safe }}
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button class='btn btn-success mt-3' class="submit">login</button>
-            </form>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            {{ form.login }}
+                            <label for="{{ form.login.id_for_label }}" class="d-none">پست الکترونیک
+                                <span
+                                        class="required">*</span></label>
+                            {{ form.login.errors|safe }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            {{ form.password }}
+                            <label for="{{ form.password.id_for_label }}" class="d-none">کلمه عبور <span
+                                    class="required">*</span></label>
+                            {{ form.password.errors|safe }}
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox mb-3">
+                  <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                  </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <a href="{% provider_login_url 'google' %}" class="btn btn btn-danger btn-lg btn-block" role="button" aria-pressed="true">Sign in with Google</a>
+                <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+              </form>
+          </div>
         </div>
-    </div>
+      </div>
     </section>
-
 {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</html>
