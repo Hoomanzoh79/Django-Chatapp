@@ -46,7 +46,7 @@ https://github.com/Hoomanzoh79/Django-Chatapp/assets/86908448/a46eab14-c618-417d
 </h2>
 <space>
 <p align="center">
-This schema is the main database design of the project based on the models I have used in this project
+This schema is the main database of this project based on the models I have used 
 </p>
 	
 ![chatapp_db](https://github.com/Hoomanzoh79/Django-Chatapp/assets/86908448/8bfa7a26-4da3-4d06-b65b-c830dfacbbc0)
