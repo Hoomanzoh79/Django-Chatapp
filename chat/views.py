@@ -22,7 +22,7 @@ def message(request,user1,user2):
     user1_obj = get_object_or_404(get_user_model(),username=user1)
     user2_obj = get_object_or_404(get_user_model(),username=user2)
 
-    if Room.objects.filter(Q(name__icontains=user1)& Q(name__icontains=user2)).exists():
+    if Room.objects.select_related('user1','user2').filter(Q(name__icontains=user1) & Q(name__icontains=user2)).exists():
         room = Room.objects.get(Q(name__icontains=user1)& Q(name__icontains=user2))
         if request.user != room.user1 and request.user != room.user2:
             return HttpResponseBadRequest("You cant't join this private chat!")

@@ -70,7 +70,7 @@ class FollowersList(generic.ListView):
 
     def get_queryset(self,**kwargs):
         user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
-        follows = Follow.objects.filter(following=user)
+        follows = Follow.objects.select_related('following','follower').filter(following=user)
         return follows
 
 class FollowingsList(generic.ListView):
@@ -80,7 +80,7 @@ class FollowingsList(generic.ListView):
 
     def get_queryset(self,**kwargs):
         user = get_object_or_404(get_user_model(),username=self.kwargs['username'])
-        follows = Follow.objects.filter(follower=user)
+        follows = Follow.objects.select_related('following','follower').filter(follower=user)
         return follows
 
 class PostCreateView(generic.CreateView):
@@ -113,7 +113,7 @@ class PostDetailView(generic.DetailView):
         if user in post.likes.all():
             like_status = True
         # comments
-        connected_comments = Comment.objects.filter(post=self.get_object())
+        connected_comments = post.comments.all()
         number_of_comments = connected_comments.count()
         context.update(
             {
