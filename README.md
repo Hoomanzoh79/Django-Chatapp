@@ -39,3 +39,16 @@ This video will show you a demo of the project and the different features
 
 https://github.com/Hoomanzoh79/Django-Chatapp/assets/86908448/a46eab14-c618-417d-9bc8-852683cf22a5
 
+<space>
+<space>
+<h2 align="center">
+ Database Schema
+</h2>
+<space>
+<p align="center">
+This schema is the main database of this project based on the models I have used 
+</p>
+	
+![chatapp_db](https://github.com/Hoomanzoh79/Django-Chatapp/assets/86908448/8bfa7a26-4da3-4d06-b65b-c830dfacbbc0)
+
+
