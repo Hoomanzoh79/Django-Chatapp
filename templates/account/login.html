@@ -16,9 +16,8 @@
 
   {% block content %}
   <section>
-    <div class="container text-dark mt-5">
-        <div class="row justify-content-md-center">
-          <div class="col-md-5 bg-grey p-3">
+        <div class="d-flex justify-content-center mt-5" dir="ltr">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 col-xs-6 bg-white m-3 m-sm-5 border rounded px-4 pt-4 pb-3 shadow">
             <form class="form-signin" method="post" action="{% url 'account_login' %}">
                 <h1 class="h3 mb-3">Please sign in</h1>
                 {{ form.non_field_errors | safe }}
@@ -49,11 +48,9 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 <a href="{% provider_login_url 'google' %}" class="btn btn btn-danger btn-lg btn-block" role="button" aria-pressed="true">Sign in with Google</a>
-                <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
               </form>
           </div>
         </div>
-      </div>
     </section>
 {% endblock %}
 
