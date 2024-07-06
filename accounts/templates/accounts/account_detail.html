@@ -69,18 +69,8 @@
 {% block content %}
 
 <section>
-    <div class="main-body">
-    <div class="container">
-    {% if messages %}
-    <div class="container mt-3">
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
+<div class="main-body">
+<div class="container">
 <nav aria-label="breadcrumb" class="main-breadcrumb">
 <ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Home</a></li>
