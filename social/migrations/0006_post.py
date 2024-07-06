@@ -8,20 +8,39 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('social', '0005_alter_follow_following'),
+        ("social", "0005_alter_follow_following"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('caption', models.TextField()),
-                ('datetime_created', models.DateTimeField(auto_now_add=True)),
-                ('datetime_modified', models.DateTimeField(auto_now=True)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('like', models.ManyToManyField(related_name='likes', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("caption", models.TextField()),
+                ("datetime_created", models.DateTimeField(auto_now_add=True)),
+                ("datetime_modified", models.DateTimeField(auto_now=True)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "like",
+                    models.ManyToManyField(
+                        related_name="likes", to=settings.AUTH_USER_MODEL
+                    ),
+                ),
             ],
         ),
     ]

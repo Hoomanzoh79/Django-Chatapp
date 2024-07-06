@@ -7,14 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('social', '0010_alter_post_likes'),
+        ("social", "0010_alter_post_likes"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='likes',
-            field=models.ManyToManyField(blank=True, related_name='likes', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="likes",
+            field=models.ManyToManyField(
+                blank=True, related_name="likes", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

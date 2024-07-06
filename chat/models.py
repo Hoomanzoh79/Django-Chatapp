@@ -1,10 +1,15 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+
 class Room(models.Model):
-    user1 = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL, related_name = 'user1')
-    user2 = models.ForeignKey(get_user_model(), null=True, on_delete=models.SET_NULL, related_name = 'user2')
-    name = models.CharField(max_length=100,unique=True)
+    user1 = models.ForeignKey(
+        get_user_model(), null=True, on_delete=models.SET_NULL, related_name="user1"
+    )
+    user2 = models.ForeignKey(
+        get_user_model(), null=True, on_delete=models.SET_NULL, related_name="user2"
+    )
+    name = models.CharField(max_length=100, unique=True)
 
     def join(self, user):
         self.online.add(user)
@@ -15,7 +20,7 @@ class Room(models.Model):
         self.save()
 
     def __str__(self):
-        return f'{self.name}'
+        return f"{self.name}"
 
 
 class Message(models.Model):
@@ -25,4 +30,4 @@ class Message(models.Model):
     datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.author.username}: {self.content} time: {self.datetime}'
+        return f"{self.author.username}: {self.content} time: {self.datetime}"

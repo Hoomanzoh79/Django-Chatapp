@@ -8,18 +8,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('social', '0003_rename_follow_data_follow_follow_date'),
+        ("social", "0003_rename_follow_data_follow_follow_date"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='follow',
-            name='followed',
+            model_name="follow",
+            name="followed",
         ),
         migrations.AddField(
-            model_name='follow',
-            name='following',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='following', to=settings.AUTH_USER_MODEL),
+            model_name="follow",
+            name="following",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="following",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]

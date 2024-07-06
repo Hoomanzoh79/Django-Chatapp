@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('social', '0007_rename_like_post_likes'),
+        ("social", "0007_rename_like_post_likes"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='post',
-            name='picture',
-            field=models.ImageField(null=True, upload_to='social/post_pictures'),
+            model_name="post",
+            name="picture",
+            field=models.ImageField(null=True, upload_to="social/post_pictures"),
         ),
     ]

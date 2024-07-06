@@ -7,8 +7,9 @@ django-allauth[socialaccount]
 redis
 channels-redis
 
-# end-to-end tests
-selenium
+# reformat
+black
+flake8
 
 # 3rd party
 python-decouple
